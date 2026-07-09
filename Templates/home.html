@@ -2,11 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Password vault</title>
+    <style>
+        .loginForm{
+            display: none;
+        }
+        .registerForm {
+    display: none;
+}
+    </style>
 </head>
 <body>
- <h1>hi</h1>
+  <div id="" >
+    <H1>Access your vault</H1>
+    
+    <button id="showForm">show</button>
+  </div>
+  {% include 'login.html' %}
+  {% include 'register.html' %}
 {% load django_browser_reload %}
 {% django_browser_reload_script %}
+
+<script>
+
+    const SF = document.getElementById("showForm")
+    const LF = document.querySelector(".loginForm")
+    function showLogin() {
+
+    LF.classList.toggle('loginForm')
+}
+    SF.addEventListener("click",showLogin)
+    const showRegisterLink = document.getElementById("showRegister")
+    const RF = document.querySelector(".registerForm")
+
+showRegisterLink.addEventListener("click", function(e) {
+    e.preventDefault()
+    LF.classList.toggle("loginForm")
+    RF.classList.toggle("registerForm")
+})
+</script>
 </body>
 </html>
